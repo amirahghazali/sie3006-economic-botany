@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SIE3006 ECONOMIC BOTANY</title>
+
+<style>
+/* ===================== GLOBAL ===================== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #0f0f0f;
+  color: white;
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+    url("https://static.wixstatic.com/media/2c59e1_f64daefa8b21412289e3016a544582cd~mv2.jpg/v1/fill/w_640,h_248,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2c59e1_f64daefa8b21412289e3016a544582cd~mv2.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+}
+
+.hero {
+  padding-top: 1px;
+}
+
+.hero > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero p {
+  font-size: 22px;
+  opacity: 0.9;
+}
+
+.hero a {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 14px 34px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  border-radius: 40px;
+  font-size: 18px;
+}
+
+/* ===================== SECTION ===================== */
+.section {
+  padding: 80px 10%;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 50px;
+}
+
+/* ===================== CARD GRID ===================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+/* ===================== ABOUT US GRID ONLY ===================== */
+#about_us .card-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  background: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 18px;
+  text-align: center;
+}
+
+/* ===================== MODAL ===================== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+  background: #111;
+  width: 80%;
+  max-width: 550px;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-content img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content ul {
+  line-height: 1.7;
+}
+
+.close {
+  font-size: 30px;
+  float: right;
+  cursor: pointer;
+}
+
+/* ===================== GO TO TOP BUTTON ===================== */
+#goTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background: #ffffff;
+  color: #000;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+#goTopBtn:hover {
+  background: #dddddd;
+}
+
+/* ===================== PAGE SYSTEM ===================== */
+.page {
+  display: none;
+  min-height: 100vh;
+}
+
+.page.active {
+  display: block;
+}
+</style>
+</head>
+
+<body>
+<button id="goTopBtn" onclick="goToTop()">↑</button>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero page active" id="home">
+  <div>
+    <h1>SIE3006<br>ECONOMIC BOTANY</h1>
+    <p>Laboratory & Field Documentation</p>
+	<a href="#" onclick="showPage('about_us')">About Us</a>
+    <a href="#" onclick="showPage('lab1')">Lab Session 1</a>
+    <a href="#" onclick="showPage('lab2')">Lab Session 2</a>
+	<a href="#" onclick="showPage('Fieldwork')">Fieldwork: Lenggeng, Negeri Sembilan</a>
+  </div>
+</section>
+
+<!-- ===================== ABOUT US ===================== -->
+<section id="about_us" class="section page">
+<button onclick="showPage('home')" class="back-btn">⬅ Back to Home</button>
+
+  <h2>About Us</h2>
+ 
+  <div class="card-grid">
+    <!-- CARD 1 -->
+    <div class="card" onclick="openModal('about 1')">
+      <img src="Aqlan.jpeg">
+      <h3>Muhamad Aqlan Zhafran Bin </h3>
+    </div>
+  
+    <!-- CARD 2 -->
+    <div class="card" onclick="openModal('about 2')">
+      <img src="Khaula_'Adawiyah.jpg">
+      <h3>Khaula 'Adawiyah Binti Amran</h3>
+    </div>
+	
+	<!-- CARD 3 -->
+    <div class="card" onclick="openModal('about 3')">
+      <img src="mira.jpg">
+      <h3>Nurul Amirah Binti Ghazali</h3>
+    </div>
+
+	<!-- CARD 4 -->
+    <div class="card" onclick="openModal('about 4')">
+      <img src="YEE SHUEN.jpg">
+      <h3>Wong Yee Shuen</h3>
+    </div>
+  
+  	<!-- CARD 5 -->
+    <div class="card" onclick="openModal('about 5')">
+      <img src="charlene lailanie.jpeg">
+      <h3>Charlene Lailanie Charles</h3>
+    </div>
+  
+  	<!-- CARD 6 -->
+    <div class="card" onclick="openModal('about 6')">
+      <img src="NAJIHAH.jpg">
+      <h3>Sharifah Najihah Nazaruddin</h3>
+    </div>
+	
+   </div>
+</section>
+
+<!-- ===================== About 1 ===================== -->
+<div class="modal" id="about 1">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('about 1')">&times;</span>
+
+    <img src="Aqlan.jpeg">
+
+    <h2>Muhamad Aqlan Zhafran Bin</h2>
+
+    <ul>
+      <li><b>Matric Number: </b> 22006502</li>
+      <li><b>Contribution:</b></li>
+      <ol>
+        <li>She baru balik Umrah</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== About 2 ===================== -->
+<div class="modal" id="about 2">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('about 2')">&times;</span>
+
+    <img src="Khaula_'Adawiyah.jpg">
+
+    <h2>Khaula 'Adawiyah</h2>
+
+    <ul>
+      <li><b>Matric Number: </b> 22006502</li>
+      <li><b>Contribution:</b></li>
+      <ol>
+        <li>She cantik and baik</li>
+        <li>She rajin and rajin</li>
+		<li>She organized person</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== About 3 ===================== -->
+<div class="modal" id="about 3">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('about 3')">&times;</span>
+
+    <img src="mira.jpg">
+
+    <h2>Nurul Amirah</h2>
+
+    <ul>
+      <li><b>Matric Number:</b> 22003489</li>
+      <li><b>Contribution:</b></li>
+      <ol>
+        <li>She's cute !</li>
+        <li>heheheheh</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== About 4 ===================== -->
+<div class="modal" id="about 4">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('about 4')">&times;</span>
+
+    <img src="YEE SHUEN.jpg">
+
+    <h2>Wong Yee Shuen</h2>
+
+    <ul>
+      <li><b>Matric Number:</b> </li>
+      <li><b>Contribution:</b></li>
+      <ol>
+        <li>She's cool!</li>
+        <li>huaahahaha</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== About 5 ===================== -->
+<div class="modal" id="about 5">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('about 5')">&times;</span>
+
+    <img src="charlene lailanie.jpeg">
+
+    <h2>Charlene Lailanie Charles</h2>
+
+    <ul>
+      <li><b>Matric Number:</b> 22003546</li>
+      <li><b>Contribution:</b></li>
+      <ol>
+        <li>She loveeeessss cats !</li>
+		<li>Rasa cam nk lempang</li>
+        <li>meowwwww</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ===================== About 6 ===================== -->
+<div class="modal" id="about 6">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('about 6')">&times;</span>
+
+    <img src="Najihah.jpg">
+
+    <h2>Sharifah Najihah Nazaruddin</h2>
+
+    <ul>
+      <li><b>Matric Number:</b> 2200</li>
+      <li><b>Contribution:</b></li>
+      <ol>
+        <li>She's mcm omputih !</li>
+        <li>heheheheh</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ===================== LAB SESSION 1 ===================== -->
+<section id="lab1" class="section page">
+<button onclick="showPage('home')" class="back-btn">⬅ Back to Home</button>
+
+  <h2>Lab Session 1 – Economic Products</h2>
+
+  <div class="card-grid">
+
+    <!-- CARD 1 -->
+    <div class="card" onclick="openModal('m1')">
+      <img src="Brown_Button_Mushroom.jpg">
+      <h3>Brown Button Mushroom</h3>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" onclick="openModal('m2')">
+      <img src="Enoki_Mushroom.jpg">
+      <h3>Enoki Mushroom</h3>
+    </div>
+	
+	<!-- CARD 3 -->
+	<div class="card" onclick="openModal('m3')">
+	  <img src="Homegrown_Seaweed.jpg">
+      <h3>Homegrown Seaweed</h3>
+    </div>
+	
+	<!-- CARD 4 -->
+	<div class="card" onclick="openModal('m4')">
+	  <img src="Tohira Hokkaido Cut Kombu Dried Kelp.png">
+      <h3>Tohira Hokkaido Cut Kombu Dried Kelp</h3>
+    </div>
+	
+	<!-- CARD 5 -->
+	<div class="card" onclick="openModal('m5')">
+	  <img src="Crispy Seaweed with Almond Slices Original.png">
+      <h3>Crispy Seaweed with Almond Slices Original</h3>
+    </div>
+	
+	<!-- CARD 6 -->
+	<div class="card" onclick="openModal('m6')">
+	  <img src="Crispy Tempura Seaweed Snack Wasabi Flavour (Noi Brand).png">
+      <h3>Crispy Tempura Seaweed Snack Wasabi Flavour (Noi Brand)</h3>
+    </div>
+	
+	<!-- CARD 7 -->
+	<div class="card" onclick="openModal('m7')">
+	  <img src="Crispy Tempura Seaweed Snack Spicy Flavour (Noi Brand).png">
+      <h3>Crispy Tempura Seaweed Snack Spicy Flavour (Noi Brand)</h3>
+    </div>
+	
+	<!-- CARD 8 -->
+	<div class="card" onclick="openModal('m8')">
+	  <img src="Fresh Black Fungus.png">
+      <h3>Fresh Black Fungus</h3>
+    </div>
+	
+	<!-- CARD 9 -->
+	<div class="card" onclick="openModal('m9')">
+	  <img src="King Oyster Mushroom.png">
+      <h3>King Oyster Mushroom</h3>
+    </div>
+	
+	<!-- CARD 10 -->
+	<div class="card" onclick="openModal('m10')">
+	  <img src="Naturally Healthy Portobello Mushroom.png">
+      <h3>Naturally Healthy Portobello Mushroom</h3>
+    </div>
+	
+	<!-- CARD 11 -->
+	<div class="card" onclick="openModal('m11')">
+	  <img src="Oguraya Tegaru Wakam.png">
+      <h3>Oguraya Tegaru Wakam</h3>
+    </div>
+	
+	<!-- CARD 12 -->
+	<div class="card" onclick="openModal('m12')">
+	  <img src="OTHER MUSHROOM.jpg">
+      <h3>Other Mushroom</h3>
+    </div>
+	
+  </div>
+</section>
+
+<!-- ===================== MODAL 1 ===================== -->
+<div class="modal" id="m1">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m1')">&times;</span>
+
+    <img src="Brown_Button_Mushroom.jpg">
+
+    <h2>Tuscan Fields Brown Button Mushroom</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Brown Button Mushroom</li>
+      <li><b>Producer:</b> Champ Fungi Sdn. Bhd.</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Antioxidants fight cell damage</li>
+        <li>B vitamins for energy and immune function</li>
+        <li>Potassium for heart health</li>
+        <li>Vitamin D source</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 2 ===================== -->
+<div class="modal" id="m2">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m2')">&times;</span>
+
+    <img src="Enoki_Mushroom.jpg">
+
+    <h2>First Pick Enoki Mushroom</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Enoki Mushroom</li>
+      <li><b>Producer:</b> Hor Fung Naturefresh Sdn. Bhd.</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Highly nutritious & low calorie</li>
+        <li>Supports immune system</li>
+        <li>Rich in antioxidants</li>
+        <li>Improves gut health</li>
+        <li>Promotes heart health</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 3 ===================== -->
+<div class="modal" id="m3">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m3')">&times;</span>
+
+    <img src="Homegrown_Seaweed.jpg">
+
+    <h2>Homegrown Seaweed</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Natural homegrown seaweed</li>
+      <li><b>Producer:</b> Emphasis Licious Enterprise</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Cholesterol free</li>
+        <li>Low sodium, low fat</li>
+        <li>Fibre - metabolism & gut</li>
+        <li>Protein - build & repair tissue</li>
+        <li>Iodine - thyroid</li>
+		<li>Zinc - boosts immune system</li>
+		<li>Iron - blood food</li>
+		<li>Potassium - energy booster</li>
+		<li>Vitamin B9 - folic Acid</li>
+		<li>Vitamin B12 - nerves & brain</li>
+		<li>Vitamin K - nutrients binder</li>
+		<li>Vitamin A - skin & eyes</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 4 ===================== -->
+<div class="modal" id="m4">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m4')">&times;</span>
+
+    <img src="Tohira Hokkaido Cut Kombu Dried Kelp.png">
+
+    <h2>Tohira Hokkaido Cut Kombu Dried Kelp</h2>
+
+    <ul>
+      <li><b>Ingredients:</b>  kelp (hokkaido)</li>
+      <li><b>Producer:</b> Tohira Konbu Kaiso., Ltd</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Thyroid support</li>
+        <li>Promote heart healt</li>
+        <li>Aid in digestion and help ease constipation</li>
+        <li>Rich in antioxidant</li>
+        <li>Regulate blood sugar</li>
+		<li>Support immune system</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 5 ===================== -->
+<div class="modal" id="m5">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m5')">&times;</span>
+
+    <img src="Crispy Seaweed with Almond Slices Original.png">
+
+    <h2>Crispy Seaweed with Almond Slices Original</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> seaweed 60%, white sesame seeds 16%, almond slices 15%, maltose 4.5%, soy sauce (contains soybean, wheat, salt and sugar) 4%, iodised salt 0.5%, packaging gas [Nitrogen (INS 941)]</li>
+      <li><b>Producer:</b> TG SHIAN WANG FOOD (THAILAND) CO., LTD</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Highly nutritious (rich in essential minerals and vitamins)</li>
+        <li>Low calories</li>
+        <li>Vegan</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ===================== MODAL 6 ===================== -->
+<div class="modal" id="m6">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m6')">&times;</span>
+
+    <img src="Crispy Tempura Seaweed Snack Wasabi Flavour (Noi Brand).png">
+
+    <h2>Crispy Tempura Seaweed Snack Wasabi Flavour (Noi Brand)</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> wheat flour 31%, seaweed 25.4%, rice flour 11.5%, wasabi seasoning (contains sugar, salt, garlic, pepper, onion, flavour enhancer (Sodium Ribonucleotides (INS 635))] 4.5%, Egg White Powder, Sunflower Seeds, Flax Seeds, Chia Seeds, Packaging Gas (INS 941)</li>
+      <li><b>Producer:</b> TG SHIAN WANG FOOD (THAILAND CO., LTD</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Nutrient-dense</li>
+        <li>Antioxidants</li>
+        <li>Omega-3s</li>
+        <li>Iodine essential for thyroid gland</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 7 ===================== -->
+<div class="modal" id="m7">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m7')">&times;</span>
+
+    <img src="Crispy Tempura Seaweed Snack Spicy Flavour (Noi Brand).png">
+
+    <h2>Crispy Tempura Seaweed Snack Spicy Flavour (Noi Brand)</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Wheat Flour,Seaweed,Rice Flour,Spicy Seasoning[Contains sugar,salt, chili,onion,garlic, yeast extract, flavour enchancer)</li>
+      <li><b>Producer:</b> TG SHIAN WANG FOOD (THAILAND) CO., LTD
+</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Seaweed base is rich in nutrients</li>
+        <li>Spicy flavour enhance taste experience</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 8 ===================== -->
+<div class="modal" id="m8">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m8')">&times;</span>
+
+    <img src="Fresh Black Fungus.png">
+
+    <h2>Fresh Black Fungus</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Fresh Black Fungus</li>
+      <li><b>Producer:</b> Mx Fruit & Vegetable (M) Sdn.Bhd.</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>High in fiber promotes health digestion</li>
+        <li>Its polysaccharides acts as prebiotics and support gut bacteria</li>
+        <li>Lower blood cholesterol level, Antithrombotic properties, Reduces heart disease</li>
+        <li>Rich in iron and prevent anemia</li>
+        <li>Antioxidant and anti-inflammatory</li>
+		<li>Rich in vitamins and minerals</li>
+		<li>Supports immune function</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 9 ===================== -->
+<div class="modal" id="m9">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m9')">&times;</span>
+
+    <img src="King Oyster Mushroom.png">
+
+    <h2>King Oyster Mushroom</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> King Oyster Mushroom</li>
+      <li><b>Producer:</b> Shenzhen Maoxiong Co., LTD</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Rich in nutrients</li>
+        <li>Low in calories and fat</li>
+        <li>Antioxidant properties</li>
+        <li>Good for heart health</li>
+        <li>Immune support</li>
+		<li>Good for metabolic health</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 10 ===================== -->
+<div class="modal" id="m10">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m10')">&times;</span>
+
+    <img src="Naturally Healthy Portobello Mushroom.png">
+
+    <h2>Naturally Healthy Portobello Mushroom</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Portobello mushroom</li>
+      <li><b>Producer:</b> Fungiculture Asia Sdn Bhd</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Low-calorie</li>
+        <li>High nutrient profile</li>
+        <li>Antioxidant properties</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 11 ===================== -->
+<div class="modal" id="m11">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('m11')">&times;</span>
+
+    <img src="Oguraya Tegaru Wakam.png">
+
+    <h2>Oguraya Tegaru Wakam</h2>
+
+    <ul>
+      <li><b>Ingredients:</b> Cut wakame seaweed</li>
+      <li><b>Producer:</b> ????????</li>
+      <li><b>Purpose / Benefits:</b></li>
+      <ol>
+        <li>Healthy heart</li>
+        <li>Lowers cholesterol</li>
+        <li>Skin care</li>
+        <li>Lowers cancer risk</li>
+        <li>Reduces inflammation</li>
+		<li>Increases energy levels</li>
+		<li>Improves brain function</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== LAB SESSION 2 ===================== -->
+<section id="lab2" class="section page">
+<button onclick="showPage('home')" class="back-btn">⬅ Back to Home</button>
+
+  <h2>Lab Session 2 – Mushroon Products</h2>
+
+  <div class="card-grid">
+
+    <!-- CARD 1 -->
+    <div class="card" onclick="openModal('lab2_m1')">
+      <img src="Davalia_sp.jpg">
+      <h3>Davalia sp</h3>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card" onclick="openModal('lab2_m2')">
+      <img src="Phymatosorus_sp.jpg">
+      <h3>Phymatosorus sp</h3>
+    </div>
+	
+	<!-- CARD 3 -->
+	<div class="card" onclick="openModal('lab2_m3')">
+	  <img src="Parablechnum_minus.jpg">
+      <h3>Parablechnum minus</h3>
+    </div>
+	
+	<!-- CARD 4 -->
+	<div class="card" onclick="openModal('lab2_m4')">
+	  <img src="Selaginella_sp.jpeg">
+      <h3>Selaginella sp</h3>
+    </div>
+	
+	<!-- CARD 5 -->
+	<div class="card" onclick="openModal('lab2_m5')">
+	  <img src="Dicranopteris_linearis.jpeg">
+      <h3>Dicranopteris linearis</h3>
+    </div>
+	
+	<!-- CARD 6 -->
+	<div class="card" onclick="openModal('lab2_m6')">
+	  <img src="Lycopodiella_sp.jpeg">
+      <h3>Lycopodiella sp</h3>
+    </div>
+	
+	<!-- CARD 7 -->
+	<div class="card" onclick="openModal('lab2_m7')">
+	  <img src="Blechnum_sp.jpeg">
+      <h3>Blechnum sp</h3>
+    </div>
+	
+	<!-- CARD 8 -->
+	<div class="card" onclick="openModal('lab2_m8')">
+	  <img src="Aglaomorpha_sp.jpeg">
+      <h3>Aglaomorpha sp</h3>
+    </div>
+	
+	<!-- CARD 9 -->
+	<div class="card" onclick="openModal('lab2_m9')">
+	  <img src="Lygodium_sp.jpeg">
+      <h3>Lygodium sp</h3>
+    </div>
+	
+	<!-- CARD 10 -->
+	<div class="card" onclick="openModal('lab2_m10')">
+	  <img src="Pyrrosia_sp.png">
+      <h3>Pyrrosia sp</h3>
+    </div>
+	
+	<!-- CARD 11 -->
+	<div class="card" onclick="openModal('lab2_m11')">
+	  <img src="Adiantum_sp.png">
+      <h3>Adiantum sp</h3>
+    </div>
+	
+	<!-- CARD 12 -->
+	<div class="card" onclick="openModal('lab2_m12')">
+	  <img src="Nephrolepis_sp.png">
+      <h3>Nephrolepis sp</h3>
+    </div>
+
+	<!-- CARD 13 -->
+	<div class="card" onclick="openModal('lab2_m13')">
+	  <img src="Huperzia_sp.png">
+      <h3>Huperzia sp</h3>
+    </div>
+	
+	<!-- CARD 14 -->
+	<div class="card" onclick="openModal('lab2_m14')">
+	  <img src="Platycerium_sp.png">
+      <h3>Platycerium sp</h3>
+    </div>
+	
+	<!-- CARD 15 -->
+	<div class="card" onclick="openModal('lab2_m15')">
+	  <img src="Asplenium nidus.png">
+      <h3>Asplenium nidus</h3>
+    </div>
+	
+	<!-- CARD 16 -->
+	<div class="card" onclick="openModal('lab2_m16')">
+	  <img src="Parablechnum minus.png">
+      <h3>Parablechnum minus</h3>
+    </div>
+	
+  </div>
+</section>
+
+<!-- ===================== MODAL 1 ===================== -->
+<div class="modal" id="lab2_m1">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m1')">&times;</span>
+
+    <img src="Davalia_sp.jpg">
+
+    <h2>Davalia sp</h2>
+
+    <ul>
+      <li><b>Common Name:</b> Rabbit’s foot fern / Squirrel’s foot fern</li>
+      <li><b>Scientific Name: </b> Davallia sp.</li>
+	  <li><b>Family: </b> Davalliaceae </li>
+      <li><b>Taxonomic Desription:</b></li>
+      <ol>
+		   <li>Epiphytic or lithophytic fern with creeping, hairy rhizomes that resemble a rabbit’s foot; covered in brown or silvery hairs.</li>
+	  </ol>
+      <li><b>Habitat:</b></li>
+	  <ol>
+		   <li>Grows on tree trunks, exposed roots, rocks, and shaded forest surfaces.</li>
+           <li>Prefers humid, shaded tropical and subtropical environments.</li>
+      </ol>
+      <li><b>Purpose / Beneficial use:</b> </li>
+	  <ol>
+		   <li>Rhizomes occasionally used in traditional remedies.</li>
+		   <li>Widely used as an ornamental plant due to its unique hairy rhizomes and elegant fronds.</li>
+      </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 2 ===================== -->
+<div class="modal" id="lab2_m2">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m2')">&times;</span>
+
+    <img src="Phymatosorus_sp.jpg">
+
+    <h2>Phymatosorus sp</h2>
+
+    <ul>
+	   <li><b>Common Name:</b> Wart fern / Monarch fern</li>
+       <li><b>Scientific Name:</b> Phymatosorus sp.</li>
+	   <li><b>Family:</b> </li>
+       <li><b>Taxonomic Description:</b></li>
+       <ol>
+           <li>Epiphytic or terrestrial fern with creeping rhizomes covered in brown scales.</li>
+           <li>Fronds leathery, pinnatifid to deeply lobed, bright green.</li>
+       </ol>
+       <li><b>Habitat:</b></li>
+	   <ol>
+           <li>Grows in humid, shaded tropical forests.</li>
+           <li>Found on tree trunks, fallen logs, or moist ground.</li>
+       </ol>
+       <li><b>Purpose / Beneficial use:</b></li>
+	   <ol>
+           <li>Rhizomes and fronds used in traditional medicine for anti-inflammatory and cooling remedies.</li>
+           <li>Also used ornamentally as a decorative fern.</li>
+       </ol>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 3 ===================== -->
+<div class="modal" id="lab2_m3">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m3')">&times;</span>
+
+    <img src="Parablechnum_minus.jpg">
+
+    <h2>Parablechnum minus</h2>
+
+    <ul>
+	    <li><b>Common Name: </b></li>
+        <li><b>Scientific Name: </b></li>
+		<li><b>Family:  </b></li>
+        <li><b>Taxonomic Desription: </b></li>
+        <li><b>Habitat:</b> </li>
+        <li><b>Purpose / Beneficial use: </b></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 4 ===================== -->
+<div class="modal" id="lab2_m4">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m4')">&times;</span>
+
+    <img src="Selaginella_sp.jpeg">
+
+    <h2>Selaginella sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Spike moss, Lesser clubmoss</li>
+        <li><b>Scientific Name:</b> Selaginella sp</li>
+		<li><b>Family:</b> Selaginellaceae </li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Small, creeping or ascending herbaceous plant forming dense mats.</li>
+			<li>Slender, dichotomously branched stems.</li>
+			<li>Leaves (microphylls) small (2–5 mm), scale-like, arranged in four rows, single-veined.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Moist, shaded areas, forest floors, rocky damp surfaces, near streams, rotting logs in tropical forests.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Whole plant used traditionally for anti-inflammatory and antioxidant properties.</li>
+			<li>Leaves/stems commonly used in herbal remedies.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 5 ===================== -->
+<div class="modal" id="lab2_m5">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m5')">&times;</span>
+
+    <img src="Dicranopteris_linearis.jpeg">
+
+    <h2>Dicranopteris linearis</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Old World forked fern / Fork fern </li>
+        <li><b>Scientific Name:</b> Dicranopteris linearis </li>
+		<li><b>Family:</b> Gleicheniaceae</li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Terrestrial fern forming dense thickets with long, scrambling or climbing fronds.</li>
+			<li>Fronds fork repeatedly (dichotomous branching), giving a distinctive “Y-shaped” pattern.</li>
+			<li>Stipes slender and wiry.</li>
+			<li>Pinnae are narrow, linear, and arranged along each branch.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Common in disturbed areas, open forests, grasslands, roadsides, and hill slopes.</li>
+			<li>Prefers sunny to partially shaded environments with well-drained, acidic soils.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Young shoots sometimes consumed as traditional vegetables in certain regions.</li>
+			<li>Whole plant used in folk medicine for cooling, anti-inflammatory, and wound-healing purposes.</li>
+			<li>Helps in soil stabilization on slopes due to dense growth.</li>
+		</ol>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ===================== MODAL 6 ===================== -->
+<div class="modal" id="lab2_m6">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m6')">&times;</span>
+
+    <img src="Lycopodiella_sp.jpeg">
+
+    <h2>Lycopodiella sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Clubmoss / Bog clubmoss</li>
+        <li><b>Scientific Name:</b> Lycopodiella sp </li>
+		<li><b>Family:</b> Lycopodiaceae</li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Small, terrestrial, creeping herb forming low mats.</li>
+			<li>Stems slender, trailing, with upright fertile shoots.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Moist, open areas such as forest edges, peatlands, swampy grounds, and wet sandy soils.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Whole plant sometimes used in traditional remedies.</li>
+			<li>Spores from cones used historically for drying powders and ceremonial uses.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 7 ===================== -->
+<div class="modal" id="lab2_m7">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m7')">&times;</span>
+
+    <img src="Blechnum_sp.jpeg">
+
+    <h2>Blechnum sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Hard fern / Deer fern</li>
+        <li><b>Scientific Name:</b> Blechnum sp </li>
+		<li><b>Family:</b> Blechnaceae</li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Terrestrial fern with erect or creeping rhizomes.</li>
+			<li>Fronds dimorphic:</li>
+			<ol>
+			    <li>Sterile fronds: broader, pinnate, bright green.</li>
+				<li>Fertile fronds: narrower with tightly packed pinnae bearing sori.</li>
+			</ol>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Moist, shaded forest floors; prefers humid tropical or montane environments, near streams or damp soils.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Young fronds are sometimes consumed traditionally (edible shoots in some species).</li>
+			<li>Rhizomes/fronds occasionally used in traditional remedies.</li>
+			<li>Ornamental value in landscaping.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 8 ===================== -->
+<div class="modal" id="lab2_m8">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m8')">&times;</span>
+
+    <img src="Aglaomorpha_sp.jpeg">
+
+    <h2>Aglaomorpha sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Bear’s paw fern / Basket fern</li>
+        <li><b>Scientific Name:</b> Aglaomorpha sp.</li>
+		<li><b>Family:</b> Polypodiaceae</li>
+        <li><b>Taxonomic Desription: </b></li>
+		<ol>
+		    <li>Large epiphytic or terrestrial fern with thick, creeping rhizomes covered in dense brown scales.</li>
+			<li>Fronds dimorphic:</b></li>
+			<ol>
+			    <li>Sterile fronds: broad, usually forming a “basket” shape that traps debris.</li>
+			</ol>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Common in humid lowland and montane tropical forests.</li>
+			<li>Grows on tree trunks, rocks, or occasionally on the forest floor.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Rhizomes and fronds used in traditional medicine (anti-inflammatory, wound care).</li>
+			<li>Popular as an ornamental fern due to its large, attractive foliage.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 9 ===================== -->
+<div class="modal" id="lab2_m9">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m9')">&times;</span>
+
+    <img src="Lygodium_sp.jpeg">
+
+    <h2>Lygodium sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Climbing fern / Old World climbing fern</li>
+        <li><b>Scientific Name:</b> Lygodium sp.</li>
+		<li><b>Family:</b> Lygodiaceae </li>
+        <li><b>Taxonomic Desription:</b> </li>
+		<ol>
+		    <li>Fern with long, climbing or twining fronds.</li>
+			<li>Fronds pinnate and flexible, can grow very long</li>
+			<li>Stipes slender; leaflets (pinnae) small and arranged along the rachis.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		   <li>Found in forests, open areas, and disturbed sites.</li>
+		   <li>Prefers sunny to partially shaded areas with moist soils.</li>
+		 </ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Young fronds sometimes used in traditional medicine.</li>
+			<li>Whole plant used for decorative purposes.</li>
+			<li>Can help cover bare soil and prevent erosion.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 10 ===================== -->
+<div class="modal" id="lab2_m10">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m10')">&times;</span>
+
+    <img src="Pyrrosia_sp.png">
+
+    <h2>Pyrrosia sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Felt fern / Leatherleaf fern</li>
+        <li><b>Scientific Name:</b> Pyrrosia sp. </li>
+		<li><b>Family:</b> Polypodiaceae </li>
+        <li><b>Taxonomic Desription:</b> </li>
+		<ol>
+		   <li>Small to medium-sized epiphytic fern.</li>
+		   <li>Fronds simple, leathery, sometimes covered in fine hairs.</li>
+		   <li>Stipes short; fronds can be oblong or lance-shaped.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Grows on tree trunks, rocks, or walls in shaded, humid forests.</li>
+			<li>Prefers moist, shaded tropical environments.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Fronds used in traditional medicine for cooling and wound healing.</li>
+			<li>Popular as an ornamental plant due to hardy, decorative leaves.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 11 ===================== -->
+<div class="modal" id="lab2_m11">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m11')">&times;</span>
+
+    <img src="Adiantum_sp.png">
+
+    <h2>Adiantum sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Maidenhair fern </li>
+        <li><b>Scientific Name:</b> Adiantum sp.</li>
+		<li><b>Family:</b> Pteridaceae</li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Small to medium-sized fern with delicate, fan-shaped fronds.</li>
+			<li>Fronds pinnate with black, wiry stipes.</li>
+			<li>Leaflets (pinnae) smooth, thin, and light green.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Grows in moist, shaded areas such as forest floors, stream banks, and rocky crevices.</li>
+			<li>Prefers humid, tropical environments.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Fronds used in traditional medicine for cooling and respiratory remedies.</li>
+			<li>Popular ornamental fern due to delicate, attractive foliage.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 12 ===================== -->
+<div class="modal" id="lab2_m12">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m12')">&times;</span>
+
+    <img src="Nephrolepis_sp.png">
+
+    <h2>Nephrolepis sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Sword fern / Boston fern</li>
+        <li><b>Scientific Name:</b> Nephrolepis sp.</li>
+		<li><b>Family:</b> Nephrolepidaceae  </li>
+        <li><b>Taxonomic Desription:</b> </li>
+		<ol>
+		    <li>Medium to large fern with long, arching fronds.</li>
+			<li>Fronds pinnate, bright green, and leathery.</li>
+			<li>Stipes short to medium, slightly hairy; pinnae narrow and arranged along the rachis.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Found on forest floors, shaded areas, and sometimes as epiphytes.</li>
+			<li>Prefers humid, tropical, and partially shaded environments.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Fronds used in traditional medicine and ornamental planting.</li>
+			<li>Helps improve air quality when grown indoors.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 13 ===================== -->
+<div class="modal" id="lab2_m13">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m13')">&times;</span>
+
+    <img src="Huperzia_sp.png">
+
+    <h2>Huperzia sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Firmoss / Clubmoss </li>
+        <li><b>Scientific Name:</b> Huperzia sp.</li>
+		<li><b>Family:</b> Lycopodiaceae</li>
+        <li><b>Taxonomic Desription:</b> </li>
+		<ol>
+		    <li>Small, creeping or erect fern-like plant.</li>
+			<li>Stems slender, branched dichotomously.</li>
+			<li>Leaves (microphylls) small, needle-like, spirally arranged along stems.</li>
+			<li>Produces small strobili (cones) at stem tips.</li>
+		</ol>
+        <li><b>Habitat:</b> </li>
+		<ol>
+		    <li>Found in moist, shaded forests, often on soil, rocks, or tree bases.</li>
+			<li>Prefers cool, humid tropical or subtropical environments.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b> </li>
+		<ol>
+		    <li>Whole plant used in traditional medicine for anti-inflammatory and wound-healing purposes.</li>
+			<li>Spores sometimes used historically for ceremonial or medicinal purposes.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 14 ===================== -->
+<div class="modal" id="lab2_m14">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m14')">&times;</span>
+
+    <img src="Platycerium_sp.png">
+
+    <h2>Platycerium sp</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Staghorn fern</li>
+        <li><b>Scientific Name:</b>Platycerium sp. </li>
+		<li><b>Family:</b> Polypodiaceae</li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Large epiphytic fern with two types, Sterile fronds and Fertile fronds.</li>
+			<li>Fronds leathery, green to grayish-green.</li>
+			<li>Rhizomes short, anchoring the plant to tree trunks or rocks.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Found on tree trunks, rocks, and occasionally on forest floors.</li>
+			<li>Prefers humid, shaded tropical forests.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Fronds used ornamentally for decoration and landscaping.</li>
+			<li>Some traditional medicinal uses in certain cultures.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 15 ===================== -->
+<div class="modal" id="lab2_m15">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m15')">&times;</span>
+
+    <img src="Asplenium nidus.png">
+
+    <h2>Asplenium nidus</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Bird’s nest fern</li>
+        <li><b>Scientific Name:</b> Asplenium nidus </li>
+		<li><b>Family:</b> Aspleniaceae </li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Large, epiphytic fern forming a rosette of broad, simple fronds.</li>
+			<li>Fronds strap-shaped, bright green, wavy margins.</li>
+			<li>Central “nest” formed by tightly clustered young fronds.</li>
+			<li>Rhizomes short, thick, and creeping, anchoring the plant to tree trunks.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Found on tree trunks, rocks, or occasionally on forest floors.</li>
+			<li>Prefers humid, shaded tropical forests.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Fronds used ornamentally for decoration.</li>
+			<li>Traditionally used in medicine for cooling and wound-healing properties.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== MODAL 16 ===================== -->
+<div class="modal" id="lab2_m16">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('lab2_m16')">&times;</span>
+
+    <img src="Parablechnum minus.png">
+
+    <h2>Parablechnum minus</h2>
+
+    <ul>
+	    <li><b>Common Name:</b> Soft water fern / Blechnum fern </li>
+        <li><b>Scientific Name:</b> Parablechnum minus </li>
+		<li><b>Family:</b> Blechnaceae </li>
+        <li><b>Taxonomic Desription:</b></li>
+		<ol>
+		    <li>Medium-sized terrestrial fern with upright fronds.</li>
+			<li>Fronds pinnate, soft, and light to dark green.</li>
+			<li>Fertile fronds are narrower with rows of sori on the underside.</li>
+			<li>Rhizomes short and creeping.</li>
+		</ol>
+        <li><b>Habitat:</b></li>
+		<ol>
+		    <li>Found in moist, shaded forest floors and along streams.</li>
+			<li>Prefers humid, cool environments with damp soil.</li>
+		</ol>
+        <li><b>Purpose / Beneficial use:</b></li>
+		<ol>
+		    <li>Young fronds sometimes used in traditional remedies.</li>
+			<li>Plant helps maintain moisture and ground cover in forest ecosystems.</li>
+		</ol>
+      </ul>
+  </div>
+</div>
+
+<!-- ===================== SCRIPT ===================== -->
+<script>
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+window.onscroll = function () {
+  const btn = document.getElementById("goTopBtn");
+  if (document.documentElement.scrollTop > 300) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+function goToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+/* ===================== PAGE SWITCHING ===================== */
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+
+  pages.forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(pageId).classList.add('active');
+
+  window.scrollTo(0, 0); // go to top
+}
+
+/* close modal when clicking outside content */
+window.addEventListener("click", function (event) {
+  if (event.target.classList.contains("modal")) {
+    event.target.style.display = "none";
+  }
+});
+
+</script>
+
+</body>
+</html>
